@@ -8,16 +8,7 @@ object HeapSort {
   val HeapSize = 100
 
   def main(args: Array[String]) {
-    val heap = new Heap
-    heap.insert(8)
-    heap.insert(4)
-    heap.insert(6)
-    heap.insert(2)
-    heap.insert(1)
-    heap.insert(7)
-    heap.insert(7)
-    heap.insert(4)
-    heap.insert(3)
+    val heap = new Heap(Array(8,4,6,2,1,7,7,4,3))
 
     println(heap)
 
@@ -27,12 +18,13 @@ object HeapSort {
 
 }
 
-class Heap {
+class Heap(val a: Array[Int]) {
 
   import HeapSort._
 
   var size = 0
   val backingArray = new Array[Int](HeapSize)
+ makeHeap(a)
 
   def insert(e: Int): Unit = {
 
@@ -59,6 +51,12 @@ class Heap {
   def sorted: List[Int] = min match {
     case None => Nil
     case Some(e) => e :: sorted
+  }
+
+  private def makeHeap(a: Array[Int]){
+    size = a.length
+    Array.copy(a, 0, backingArray, 0, size)
+    for(i <- (0 until size).reverse) bubbleDown(i)
   }
 
   private def bubbleDown(index: Int): Unit = {

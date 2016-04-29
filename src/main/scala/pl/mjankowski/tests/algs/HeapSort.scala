@@ -80,10 +80,10 @@ class Heap(val a: Array[Int]) {
     }
   }
 
-  def isKthElemGreaterOrEqualTo(x: Int, k: Int): Boolean = {
-
-    1,2,6,3,4,7,7,4,8
-  }
+//  def isKthElemGreaterOrEqualTo(x: Int, k: Int): Boolean = {
+//
+//    1,2,6,3,4,7,7,4,8
+//  }
 
   private def parent(i: Int): Option[Int] = if (i < 1) None else Some(i / 2)
 

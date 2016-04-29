@@ -1,4 +1,4 @@
-package pl.mjankowski.tests.algs
+package pl.mjankowski.tests.algs.pl.mjankowski.tests.algs.sort
 
 /**
  * Created by mjankowski on 2016-04-29.

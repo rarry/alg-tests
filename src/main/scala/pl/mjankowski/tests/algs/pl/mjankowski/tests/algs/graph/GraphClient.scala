@@ -3,7 +3,7 @@ package pl.mjankowski.tests.algs.pl.mjankowski.tests.algs.graph
 /**
  * Created by mjankowski on 2016-04-29.
  */
-object DFS {
+object GraphClient {
 
 
   def main(args: Array[String]) {
@@ -29,7 +29,12 @@ object DFS {
     g.addEdge(5, 2)
     g.addEdge(5, 4)
 
-    g.dfs(g, 0)(x => print(x+" "))
+    g.bfs(g, 0)(x => print(x + " "))
+
+    println
+    g.getDistances foreach (x => print(x + " "))
+
+    g.getPaths foreach { case (k, v) => println(k + "->" + v) }
   }
 
 }

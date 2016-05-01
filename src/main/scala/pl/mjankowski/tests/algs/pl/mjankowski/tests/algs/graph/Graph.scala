@@ -1,4 +1,4 @@
-package pl.mjankowski.tests.algs.pl.mjankowski.tests.algs.graph
+package pl.mjankowski.tests.algs.graph
 
 import scala.collection.mutable
 

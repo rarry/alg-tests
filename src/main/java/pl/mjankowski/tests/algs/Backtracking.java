@@ -18,15 +18,15 @@ public abstract class Backtracking<T> {
         } else {
 
             if (isAllowed(solution, iteration)) {
-                printDebugSolution(solution, true);
-                List<T> candidates = generateCandidates(iteration);
+//                printDebugSolution(solution, true);
+                List<T> candidates = generateCandidates(solution, iteration);
                 for (T c : candidates) {
                     solution.add(c);
                     backtrack(solution, iteration + 1);
                     solution.remove(solution.size() - 1);
                 }
             }else{
-                printDebugSolution(solution, false);
+//                printDebugSolution(solution, false);
             }
         }
     }
@@ -35,7 +35,7 @@ public abstract class Backtracking<T> {
 
     protected abstract void processSolution(List<T> solution);
 
-    protected abstract List<T> generateCandidates(int iteration);
+    protected abstract List<T> generateCandidates(List<T> current, int iteration);
 
     protected abstract boolean isAllowed(List<T> solution, int iteration);
 

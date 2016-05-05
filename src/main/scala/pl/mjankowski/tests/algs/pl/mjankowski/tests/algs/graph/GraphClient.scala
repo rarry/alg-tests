@@ -7,7 +7,7 @@ object GraphClient {
 
 
   def main(args: Array[String]) {
-    val g = new Graph(10)
+    val g = new GraphMatrix(10)
 
     g.addEdge(0, 1)
 

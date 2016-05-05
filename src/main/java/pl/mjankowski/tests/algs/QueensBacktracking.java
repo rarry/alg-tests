@@ -31,7 +31,7 @@ public class QueensBacktracking extends Backtracking<Queen> {
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
                 if (solution.contains(new Queen(i, j))) {
-                    System.out.print("x\t");
+                    System.out.print("X\t");
                 } else {
                     System.out.print("o\t");
                 }
@@ -41,14 +41,15 @@ public class QueensBacktracking extends Backtracking<Queen> {
 
     }
 
-    private Predicate<Queen> isCollision(Queen q) {
-        return q.equals(queen)isDiagonalCollision(q).or(isHorizontalCollision(q)).or(isVerticalCollision(q));
+    private Predicate<Queen> isCollision(Queen queen) {
+        Predicate<Queen> p3 = q -> q.equals(queen);
+        return p3.negate().and(isDiagonalCollision(queen).or(isHorizontalCollision(queen)).or(isVerticalCollision(queen)));
     }
 
     private Predicate<Queen> isDiagonalCollision(Queen queen) {
         Predicate<Queen> p1 = q -> q.getI() - q.getJ() == queen.getI() - queen.getJ();
         Predicate<Queen> p2 = q -> q.getI() + q.getJ() == queen.getI() + queen.getJ();
-        return p1.and(p2);
+        return p1.or(p2);
     }
 
 
@@ -67,11 +68,13 @@ public class QueensBacktracking extends Backtracking<Queen> {
 
     @Override
     protected void processSolution(List<Queen> solution) {
-        solution.forEach(System.out::println);
+        System.out.println("\n\n");
+//        solution.forEach(q -> System.out.print(q+"\t"));
+        printDebugSolution(solution, true);
     }
 
     @Override
-    protected List<Queen> generateCandidates(int iteration) {
+    protected List<Queen> generateCandidates(List<Queen> solution, int iteration) {
         IntStream range = IntStream.rangeClosed(1, 8);
         Stream<Queen> a = range.mapToObj(j -> new Queen(iteration, j));
         List<Queen> list = a.collect(Collectors.toList());

@@ -52,4 +52,9 @@ public class Queen {
         result = 31 * result + j;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "(" + i + "," + j + ")";
+    }
 }

@@ -22,7 +22,7 @@ class Graph(val size: Int) {
     pathTo(i) = -1
   }
 
-  def dfs(g: Graph, w: Vertex)(execute: Vertex => Unit): Unit = {
+  def dfs(g: GraphMatrix, w: Vertex)(execute: Vertex => Unit): Unit = {
 
     marked(w) = true
     execute(w)
@@ -34,7 +34,7 @@ class Graph(val size: Int) {
     }
   }
 
-  def bfs(g: Graph, w: Vertex)(execute: Vertex => Unit): Unit = {
+  def bfs(g: GraphMatrix, w: Vertex)(execute: Vertex => Unit): Unit = {
 
     bfsQueue.enqueue(w)
     distanceTo(w) = 0

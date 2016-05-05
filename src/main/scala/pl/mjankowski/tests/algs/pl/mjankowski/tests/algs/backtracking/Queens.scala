@@ -17,6 +17,10 @@ object Queens {
     //    println(queens hasCollisions)
 
     queens findSolution
+
+//    println(queens.getIter)
+
+//    queens.printDifferences
   }
 
 }
@@ -25,6 +29,8 @@ class Queens {
 
   type Queen = (Int, Int)
 
+  var iter = 0
+
   val chessBoard = ListBuffer[Queen]()
 
   def isVerticalCollision(queen: Queen): Boolean = chessBoard exists (q => q._2 == queen._2 && q._1 != queen._1)
@@ -32,9 +38,10 @@ class Queens {
   def isHorizontalCollision(queen: Queen): Boolean = chessBoard exists (q => q._1 == queen._1 && q._2 != queen._2)
 
   def isDiagonalCollision(queen: Queen): Boolean = {
-    val diff = Math.abs(queen._1 - queen._2)
-    chessBoard exists (q => ((Math.abs(q._1 - q._2) == diff)
-      || (8 - Math.abs(q._1 - q._2) == diff)) && q != queen)
+    val diff = queen._1 - queen._2
+    val sum = queen._1 + queen._2
+    chessBoard exists (q => ((q._1 - q._2 == diff)
+      || ((q._1 + q._2) == sum)) && q != queen)
   }
 
   def hasCollisions: Boolean = {
@@ -53,15 +60,20 @@ class Queens {
   def findSolution = {
 
     def backtrackDfs(row: Int): Unit = {
+
+      iter = iter + 1
       if (isSolution) println(chessBoard)
       else {
         if (row <= 8 && isAllowed) {
+//          printChessBoad(chessBoard, "Allowed")
           val candidates = (1 to 8) map (j => (row, j))
           for (c <- candidates) {
             addToChessBoard(c)
             backtrackDfs(row + 1)
             chessBoard.remove(chessBoard.length - 1)
           }
+        }else {
+//          printChessBoad(chessBoard, "Not allowed")
         }
       }
     }
@@ -69,5 +81,27 @@ class Queens {
     backtrackDfs(1)
   }
 
+  def getIter = iter
+
+  def printChessBoad(cb: ListBuffer[Queen], m: String) = {
+
+    println("\n\n\n"+m)
+    for(i <- (1 to 8)){
+      for(j <- (1 to 8)){
+        if(cb contains((i,j))) print("x ")
+        else print("o ")
+      }
+      println
+    }
+  }
+
+  def printDifferences = {
+    for(i <- (1 to 8)){
+      for(j <- (1 to 8)){
+        print(s"($i,$j)\t")
+      }
+      println("\n")
+    }
+  }
 
 }

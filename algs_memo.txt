@@ -1,0 +1,33 @@
+Q: na jakim grafie dziala sortowanie topologiczne
+A: DAG
+
+Q: co to jest sortowanie topologiczne
+A: Graf skierowany. Strza³ka  u->v oznacza, ze v zalezy od u. Ustawic zadania tak, aby wykonaly sie zgodnie z zaleznoscia jednych od drugich
+
+Q: omow algorytm sortowania topologicznego
+A: DFS na grafie skierowanym, ale odkladamy wierzcholki na stos po kroku dfs. Jak juz z wierzcholka nie mozna isc dalej, to odkladamy na stos.
+
+Q: czy digraph ma cykl
+A: str 577 sedgewick
+
+Q: przyklad na strongly connected components
+A: 
+
+1. food web - subset of species with common energy flow. Vertices are aanimals, edges say that a species v eat a species w 
+2. software module dependency graph. Package strong components together. Improve design
+
+Q: Algorytm strong components Kasaraju-Sharir
+A:
+
+1. calculate reversed graph
+2. run topological sort on reversed graph
+3. run dfs on original graph, but starting vertices are in the order created by topological sort
+
+Q: DFS time complexity
+A:
+
+Q: Strong components complexity
+A: twice DFS
+
+Q: topological sort complexity
+A: just a DFS

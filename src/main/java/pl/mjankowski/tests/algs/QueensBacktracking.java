@@ -42,7 +42,7 @@ public class QueensBacktracking extends Backtracking<Queen> {
     }
 
     private Predicate<Queen> isCollision(Queen q) {
-        return q.equals(queen)isDiagonalCollision(q).or(isHorizontalCollision(q)).or(isVerticalCollision(q));
+        return isDiagonalCollision(q).or(isHorizontalCollision(q)).or(isVerticalCollision(q));
     }
 
     private Predicate<Queen> isDiagonalCollision(Queen queen) {

@@ -117,4 +117,8 @@ public class DiGraphAdj implements DiGraph {
         }
     }
 
+    private void greedyMst(){
+
+    }
+
 }

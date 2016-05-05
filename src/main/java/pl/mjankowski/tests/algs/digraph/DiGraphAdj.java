@@ -1,4 +1,4 @@
-package pl.mjankowski.tests.algs.graph2;
+package pl.mjankowski.tests.algs.digraph;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

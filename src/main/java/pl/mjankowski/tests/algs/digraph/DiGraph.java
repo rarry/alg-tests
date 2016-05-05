@@ -1,8 +1,7 @@
-package pl.mjankowski.tests.algs.graph2;
+package pl.mjankowski.tests.algs.digraph;
 
 import java.util.Deque;
 import java.util.Set;
-import java.util.Stack;
 
 /**
  * Created by mjankowski on 2016-05-05.

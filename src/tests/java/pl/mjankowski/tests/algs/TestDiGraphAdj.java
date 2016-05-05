@@ -1,7 +1,7 @@
 package pl.mjankowski.tests.algs;
 
 import org.junit.Test;
-import pl.mjankowski.tests.algs.graph2.DiGraphAdj;
+import pl.mjankowski.tests.algs.digraph.DiGraphAdj;
 
 import java.util.Deque;
 

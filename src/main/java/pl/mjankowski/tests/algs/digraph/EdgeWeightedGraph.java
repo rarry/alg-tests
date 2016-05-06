@@ -35,9 +35,13 @@ public class EdgeWeightedGraph {
 
     }
 
-    Set<Edge> getAdj(int v);
+    Set<Edge> getAdj(int v){
+        return adj[v];
+    }
 
-    Set<Edge> getAllEdged();
+    Set<Edge> getAllEdged(){
+
+    }
 
     void addEdge(Edge edge){
 

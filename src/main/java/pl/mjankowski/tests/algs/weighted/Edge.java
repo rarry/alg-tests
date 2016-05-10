@@ -1,4 +1,4 @@
-package pl.mjankowski.tests.algs.digraph;
+package pl.mjankowski.tests.algs.weighted;
 
 /**
  * Created with IntelliJ IDEA.
@@ -37,5 +37,7 @@ public class Edge implements Comparable<Edge> {
         return Integer.compare(v, w);
     }
 
-
+    public double getWeight() {
+        return weight;
+    }
 }

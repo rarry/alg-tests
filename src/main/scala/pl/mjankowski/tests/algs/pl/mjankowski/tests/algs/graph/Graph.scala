@@ -34,7 +34,7 @@ class Graph(val size: Int) {
     }
   }
 
-  def bfs(g: GraphMatrix, w: Vertex)(execute: Vertex => Unit): Unit = {
+  def bfs(g: Graph, w: Vertex)(execute: Vertex => Unit): Unit = {
 
     bfsQueue.enqueue(w)
     distanceTo(w) = 0

@@ -1,6 +1,5 @@
-package pl.mjankowski.tests.algs.digraph;
+package pl.mjankowski.tests.algs.weighted;
 
-import java.util.Deque;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,32 +25,32 @@ public class EdgeWeightedGraph {
         }
     }
 
-    int verticesCount(){
+    int verticesCount() {
         return n;
     }
 
-    int edgesCount(int v){
-
-
+    int edgesCount(int v) {
+        return getAllEdges().size();
     }
 
-    Set<Edge> getAdj(int v){
+    Set<Edge> getAdj(int v) {
         return adj[v];
     }
 
-    Set<Edge> getAllEdged(){
-
+    Set<Edge> getAllEdges() {
+        Set<Edge> edges = new HashSet<Edge>();
+        for (int i = 0; i < this.n; i++) {
+            edges.addAll(adj[i]);
+        }
+        return edges;
     }
 
-    void addEdge(Edge edge){
-
+    void addEdge(Edge edge) {
         int v = edge.either();
         int w = edge.other(v);
 
-        adj[v].add(edge) ;
-        adj[v].add(edge) ;
-
-
+        adj[v].add(edge);
+        adj[w].add(edge);
     }
 
 }

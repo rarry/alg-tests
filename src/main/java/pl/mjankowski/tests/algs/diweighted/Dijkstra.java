@@ -28,8 +28,19 @@ public class Dijkstra {
         distTo[start] = 0.0;
         int s = start;
         while (s >= 0) {
-            relax(graph, s);
+            for (DirectedEdge e : graph.adj(s)) {
+                relax(e);
+            }
             s = findNext();
+        }
+    }
+
+    private void relax(DirectedEdge e) {
+
+        double newDist = distTo[e.from()] + e.weight();
+        if (newDist < distTo[e.to()]) {
+            distTo[e.to()] = newDist;
+            edgeTo[e.to()] = e.from();
         }
     }
 
@@ -44,24 +55,15 @@ public class Dijkstra {
         return minIndex;
     }
 
-    private void relax(EdgeWeightedDigraph graph, int v) {
 
-        visited[v] = true;
 
-        for (DirectedEdge e : graph.adj(v)) {
-            double newDist = distTo[v] + e.weight();
-            if (newDist < distTo[e.to()]) {
-                distTo[e.to()] = newDist;
-                edgeTo[e.to()] = v;
-            }
-        }
-    }
 
-    public double[] getDistTo(){
+
+    public double[] getDistTo() {
         return distTo;
     }
 
-    public int[] getEdgeTo(){
+    public int[] getEdgeTo() {
         return edgeTo;
     }
 }

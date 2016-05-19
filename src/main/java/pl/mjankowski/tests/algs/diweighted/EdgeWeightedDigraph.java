@@ -4,7 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by mjankowski on 2016-05-11.
+ * Created with IntelliJ IDEA.
+ * User: mac
+ * Date: 13.05.16
+ * Time: 10:23
+ * To change this template use File | Settings | File Templates.
  */
 public class EdgeWeightedDigraph {
 
@@ -14,7 +18,7 @@ public class EdgeWeightedDigraph {
     public EdgeWeightedDigraph(int verticesCount) {
         this.verticesCount = verticesCount;
         this.adj = new HashSet[verticesCount];
-        for(int i=0; i<verticesCount; i++){
+        for (int i=0; i< verticesCount;i++){
             this.adj[i] = new HashSet<DirectedEdge>();
         }
     }
@@ -23,7 +27,12 @@ public class EdgeWeightedDigraph {
         this.adj[edge.from()].add(edge);
     }
 
+
     public Set<DirectedEdge> adj(int v){
-        return this.adj(v);
+        return adj[v];
+    }
+
+    public int getVerticesCount() {
+        return verticesCount;
     }
 }

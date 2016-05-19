@@ -1,9 +1,11 @@
 package pl.mjankowski.tests.algs.diweighted;
 
 /**
+ * <<<<<<< HEAD
  * Created by mjankowski on 2016-05-11.
  */
-public class DirectedEdge {
+
+public class DirectedEdge implements Comparable<DirectedEdge> {
 
     private final int v, w;
     private final double weight;
@@ -25,5 +27,9 @@ public class DirectedEdge {
     public double weight() {
         return weight;
     }
-}
 
+    @Override
+    public int compareTo(DirectedEdge o) {
+        return Integer.compare(v, w);
+    }
+}

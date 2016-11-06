@@ -1,6 +1,9 @@
 package pl.mjankowski.codility.lesson6_sort
 
 /**
+  * 0%    https://codility.com/demo/results/trainingEC38X6-SSV/
+  * 93%   https://codility.com/demo/results/trainingY65R4Z-7T6/
+  * 100%  https://codility.com/demo/results/training3JNQQA-U7D/
   *
   * @author Maciej Jankowski <mjankowski@pl.imshealth.com> on 25.10.16
   */

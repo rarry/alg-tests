@@ -3,6 +3,8 @@ package pl.mjankowski.codility.lesson13_fibonacci
 import scala.collection.mutable.ArrayBuffer
 
 /**
+  * 91%   https://codility.com/demo/results/trainingEWYFD9-5T6/
+  * 100%  https://codility.com/demo/results/training6EMVKG-UPK/
   *
   * @author Maciej Jankowski <mjankowski@pl.imshealth.com> on 04.11.16
   */
@@ -11,7 +13,8 @@ class FibFrog {
 
   def solution(a: Array[Int]): Int = {
 
-    val fibs = ArrayBuffer[Int]()
+    val n = a.length
+    var fibs = ArrayBuffer[Int]()
 
     def generateFib(n: Int): Unit = {
 
@@ -27,39 +30,52 @@ class FibFrog {
       }
     }
 
-    def getBiggestSmallerThan(k: Int): Int = {
-      var i = fibs.length
-      while(i >= 0){
-        val f = fibs(i)
-        if(f<=k) return f
+    generateFib(n + 2)
+    fibs = fibs.tail.tail
+
+    val minJumps = Array.fill(n + 2)(-1)
+
+    def d(i: Int): Int = {
+      if(i <= 0)  0
+      else{
+        minJumps(i)
       }
-      0
     }
 
-    generateFib(a.length)
-
-    val first = -1
-    val last = a.length + 2
-    var jumps = 0
-    var sum = 0
-
-    val biggest = getBiggestSmallerThan(last)
-    if(biggest == last) jumps
-    else{
-
+    def allowed(k: Int): Boolean = {
+      val i = k-1
+      if(i < 0) true
+      else if(i>=n) true
+      else a(i) == 1
     }
 
-    0
+    for (i <- (-1 to n+1)) {
+
+      if (allowed(i)) {
+        val fibs2 = fibs.collect {
+          case f if i - f >= 0 && allowed(i - f) && d(i - f) >= 0 => f
+        }
+        val candidates = fibs2.map(f => d(i - f) + 1)
+        if (candidates.length > 0) {
+          minJumps(i) = candidates.min
+        }
+      }
+    }
+
+    minJumps(n + 1)
   }
+
 }
 
 object FibFrog {
 
   def main(args: Array[String]) {
-    check(Array[Int](15, 10, 3), 1)
-    check(Array[Int](15), 1)
+    check(Array[Int](0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0), 3)
+    check(Array[Int](0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1), 3)
+    check(Array[Int](), 1)
     check(Array[Int](1), 1)
-    check(Array[Int](15), 1)
+    check(Array[Int](0,0), 1)
+    check(Array[Int](0,0, 0), -1)
   }
 
   private def check(A: Array[Int], expected: Int) {
